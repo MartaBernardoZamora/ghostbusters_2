@@ -1,4 +1,4 @@
-package org.bibendum_coders.ghostbusters_2.controllers;
+package org.bibendum_coders.ghostbusters_2.models;
 
 import java.time.LocalDateTime;
 
