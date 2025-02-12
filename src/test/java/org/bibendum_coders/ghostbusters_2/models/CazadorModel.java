@@ -19,11 +19,11 @@ public class CazadorModel {
     public List<FantasmaModel> getFantasmas() {
         return fantasmas;
     }
-    public void addBichu(FantasmaModel fantasmaModel) {
+    public void addFantasma(FantasmaModel fantasmaModel) {
         fantasmas.add(fantasmaModel);
     }
 
-    public void deleteBichu(int fantasmaNumber) {
+    public void deleteFantasma(int fantasmaNumber) {
         fantasmas.remove(fantasmaNumber-1);
     }
 
