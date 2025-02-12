@@ -8,13 +8,14 @@ import org.bibendum_coders.ghostbusters_2.models.FantasmaModel;
 
 public class CazadorController {
     private CazadorModel cazadorModel;
-    
+    private int contadorId;
     public CazadorController() {
         this.cazadorModel = new CazadorModel();
+        this.contadorId = 1;
     }
     public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {//aqui se mantiene de meomento int (vosotros teníais string) y no el enum porque es lo que devuelve el jugador
         Clase claseEnum = Clase.values()[clase - 1];
-        cazadorModel.getFantasmas().add(new FantasmaModel(nombre, claseEnum, nivel, habilidad)); 
+        cazadorModel.getFantasmas().add(new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad)); 
         //printMenuView(); aquí se llama al metodo de la vista
     }
     public void liberarFantasma(int intFantasma) {
@@ -51,6 +52,11 @@ public class CazadorController {
          */
 
     }
-
+    public CazadorModel getCazadorModel() {
+        return cazadorModel;
+    }
+    public int getContadorId() {
+        return contadorId;
+    }
 
 }

@@ -6,18 +6,16 @@ import java.util.List;
 public class CazadorModel {
     private List<FantasmaModel> fantasmas; 
     private int contadorId;
-
     public CazadorModel() {
         this.fantasmas = new ArrayList<>();
         this.contadorId = 1;
     }
-
-    public int getContadorId() {
-        return contadorId;
-    }
     
     public List<FantasmaModel> getFantasmas() {
         return fantasmas;
+    }
+    public int getContadorId() {
+        return contadorId;
     }
     public void addFantasma(FantasmaModel fantasmaModel) {
         fantasmas.add(fantasmaModel);
