@@ -22,7 +22,8 @@ public class CazadorModel {
     }
 
     public void deleteFantasma(int fantasmaNumber) {
-        fantasmas.remove(fantasmaNumber-1);
+        System.out.println("Fantasma " + fantasmaNumber + " liberado");
+        fantasmas.remove(fantasmaNumber);
     }
 
 }
