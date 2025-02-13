@@ -1,17 +1,13 @@
 package org.bibendum_coders.ghostbusters_2;
 
-/**
- * Hello world!
- */
+import org.bibendum_coders.ghostbusters_2.controllers.CazadorController;
+
+
 public final class App {
     private App() {
     }
-
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        CazadorController cazadorController = new CazadorController();
+        cazadorController.printMenuView();
     }
 }
