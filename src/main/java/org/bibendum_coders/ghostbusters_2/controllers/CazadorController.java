@@ -1,17 +1,22 @@
 package org.bibendum_coders.ghostbusters_2.controllers;
 
 import java.util.List;
+import java.util.Scanner;
 
 import org.bibendum_coders.ghostbusters_2.models.CazadorModel;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
 import org.bibendum_coders.ghostbusters_2.models.FantasmaModel;
+import org.bibendum_coders.ghostbusters_2.views.MenuView;
+import org.bibendum_coders.ghostbusters_2.views.CapturarView;
 
 public class CazadorController {
     private CazadorModel cazadorModel;
     private int contadorId;
+    private Scanner scanner;
     public CazadorController() {
         this.cazadorModel = new CazadorModel();
         this.contadorId = 1;
+        this.scanner = new Scanner(System.in);
     }
     public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {//aqui se mantiene de meomento int (vosotros teníais string) y no el enum porque es lo que devuelve el jugador
         Clase claseEnum = Clase.values()[clase - 1];
@@ -23,10 +28,10 @@ public class CazadorController {
         //printMenuView(); aquí se llama al metodo de la vista
     }
     public void manejarMenu(int userOption) {
+        System.out.println("Opcion elegida: " + userOption);//para probar flujo
         if(userOption == 1) {
-            /*LLAMADA A LA VISTA 
-            CatchView catchView = new CatchView(scanner, this);
-            catchView.showCatchView();*/
+            CapturarView capturarView = new CapturarView(scanner, this);
+            capturarView.showCapturarView();
         }
         else if(userOption == 2) {
             
@@ -44,13 +49,12 @@ public class CazadorController {
             exitView.showExitView();*/
 
         }
-        /*
-        public void printMenuView() {
-            MenuView menuView = new MenuView(scanner, this);
-            menuView.showMenuView();
-        }
-         */
 
+    }
+          
+    public void printMenuView() {
+        MenuView menuView = new MenuView(scanner, this);
+        menuView.showMenuView();
     }
     public CazadorModel getCazadorModel() {
         return cazadorModel;
