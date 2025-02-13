@@ -1,6 +1,6 @@
 package org.bibendum_coders.ghostbusters_2.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class FantasmaModel {
     private int id;
@@ -8,7 +8,7 @@ public class FantasmaModel {
     private Clase clase;//Esto lo he cambiado para utilizar el enum Clase
     private String nivel;//¿Lo cambiamos a enum?
     private String habilidad;
-    private LocalDateTime fechaCaptura;
+    private LocalDate fechaCaptura;
 
     public FantasmaModel(int id, String nombre, Clase clase, String nivel, String habilidad) {
         this.id = id;
@@ -16,7 +16,7 @@ public class FantasmaModel {
         this.clase = clase;
         this.nivel=nivel;
         this.habilidad = habilidad;
-        this.fechaCaptura = LocalDateTime.now();
+        this.fechaCaptura = LocalDate.now();
     }
     
     public int getId() { return id;}
@@ -24,6 +24,6 @@ public class FantasmaModel {
     public Clase getClase() { return clase; }
     public String getNivelPeligro() { return nivel; }
     public String getHabilidad() { return habilidad; }
-    public LocalDateTime getFechaCaptura() { return fechaCaptura; }
+    public LocalDate getFechaCaptura() { return fechaCaptura; }
 
 }

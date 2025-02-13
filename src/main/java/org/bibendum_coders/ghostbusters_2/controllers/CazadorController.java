@@ -19,7 +19,7 @@ public class CazadorController {
         //printMenuView(); aquí se llama al metodo de la vista
     }
     public void liberarFantasma(int intFantasma) {
-        cazadorModel.getFantasmas().remove(intFantasma-1);//esto le preguntamos a Arancha, es la opción  que devuelve el usuario y es habitual y se sobrentiende que se le resta 1 para coincidir con la posición de array
+        cazadorModel.getFantasmas().remove(intFantasma);//esto le preguntamos a Arancha, es la opción  que devuelve el usuario y es habitual y se sobrentiende que se le resta 1 para coincidir con la posición de array
         //printMenuView(); aquí se llama al metodo de la vista
     }
     public void manejarMenu(int userOption) {

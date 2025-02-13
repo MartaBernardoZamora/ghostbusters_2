@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CazadorModel {
-    private List<FantasmaModel> fantasmas; 
+    private List<FantasmaModel> fantasmas; //posibilidad de mirar que tipo de lista va mejor
     private int contadorId;
     public CazadorModel() {
         this.fantasmas = new ArrayList<>();
