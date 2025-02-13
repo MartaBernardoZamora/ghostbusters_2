@@ -7,7 +7,7 @@ import org.bibendum_coders.ghostbusters_2.models.CazadorModel;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
 import org.bibendum_coders.ghostbusters_2.models.FantasmaModel;
 import org.bibendum_coders.ghostbusters_2.views.MenuPrincipalView;
-import org.bibendum_coders.ghostbusters_2.views.CapturarView;
+import org.bibendum_coders.ghostbusters_2.views.CapturaFantasmaView;
 import org.bibendum_coders.ghostbusters_2.views.FantasmasView;
 
 public class CazadorController {
@@ -22,7 +22,7 @@ public class CazadorController {
     public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {//aqui se mantiene de meomento int (vosotros teníais string) y no el enum porque es lo que devuelve el jugador
         Clase claseEnum = Clase.values()[clase - 1];
         cazadorModel.getFantasmas().add(new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad)); 
-        printMenuView();
+        
     }
     public void liberarFantasma(int intFantasma) {
         cazadorModel.getFantasmas().remove(intFantasma);//esto le preguntamos a Arancha, es la opción  que devuelve el usuario y es habitual y se sobrentiende que se le resta 1 para coincidir con la posición de array
@@ -31,8 +31,7 @@ public class CazadorController {
     public void manejarMenu(int userOption) {
         System.out.println("Opcion elegida: " + userOption);//para probar flujo
         if(userOption == 1) {
-            CapturarView capturarView = new CapturarView(scanner, this);
-            capturarView.showCapturarView();
+            new CapturaFantasmaView(this);
         }
         else if(userOption == 2) {
             List<FantasmaModel> fantasmas = cazadorModel.getFantasmas();
