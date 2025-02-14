@@ -1,7 +1,7 @@
 package org.bibendum_coders.ghostbusters_2.controllers;
 
 import java.util.List;
-
+import java.util.function.Supplier;
 
 import org.bibendum_coders.ghostbusters_2.models.CazadorModel;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
@@ -19,32 +19,37 @@ public class CazadorController {
         this.contadorId = 1;
        
     }
-    public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {//aqui se mantiene de meomento int (vosotros teníais string) y no el enum porque es lo que devuelve el jugador
+    public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {
         Clase claseEnum = Clase.values()[clase - 1];
-        cazadorModel.getFantasmas().add(new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad)); 
+        FantasmaModel fantasmaModel = new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad);
+        cazadorModel.getFantasmas().add(fantasmaModel); 
         
     }
     public void liberarFantasma(int intFantasma) {
-        
         cazadorModel.getFantasmas().removeIf(fantasma -> fantasma.getId() == intFantasma);
     }
     public void manejarMenu(int userOption) {
         
         if(userOption == 1) {
-            new CapturaFantasmaView(this);
+            showCapturaFantasmaView();
         }
         else if(userOption == 2) {
             List<FantasmaModel> fantasmas = cazadorModel.getFantasmas();
-            new EditarFantasmasView(this, fantasmas); 
+            showEditarFantasmasView(fantasmas); 
         }
         else if(userOption == 6) {
-            System.exit(0);
-
+            salir();
         }
-
     }
-          
-    
+    public void showCapturaFantasmaView() {
+        new CapturaFantasmaView(this);
+    }
+    public void showEditarFantasmasView(List<FantasmaModel> fantasmas) {
+        new EditarFantasmasView(this, fantasmas);
+    }
+    public void salir() {
+        System.exit(0);
+    }
     public void printMenuView() {
         MenuPrincipalView.getInstance(this);
         
