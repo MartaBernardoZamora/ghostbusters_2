@@ -162,17 +162,6 @@ public class EditarFantasmasView extends JFrame {
         button.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Borde negro limpio
         button.setMargin(new Insets(5, 10, 5, 10)); // Espaciado interno uniforme
 
-        // Efecto Hover: Cambiar el color cuando el ratón pasa por encima
-        button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(0, 102, 204)); // Azul más oscuro al pasar el ratón
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(0, 123, 255)); // Volver al azul original
-            }
-        });
-
         return button;
     }
 

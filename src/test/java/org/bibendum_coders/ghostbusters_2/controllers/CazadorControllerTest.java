@@ -1,7 +1,7 @@
 package org.bibendum_coders.ghostbusters_2.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Supplier;
 
 import org.bibendum_coders.ghostbusters_2.models.CazadorModel;
 import org.bibendum_coders.ghostbusters_2.models.FantasmaModel;
@@ -21,6 +21,7 @@ import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 
 public class CazadorControllerTest {
@@ -56,31 +57,40 @@ public class CazadorControllerTest {
     void testLiberarFantasma() {
         CazadorController cazadorController = new CazadorController();
         cazadorController.capturarFantasma("fantasmico", 1, "Medio", "vuela");
-
         List<FantasmaModel> result = cazadorController.getCazadorModel().getFantasmas();
-
         cazadorController.liberarFantasma(1);
-
         assertThat(result.size(), is(0));
 
     }
 
     @Test
     void testManejarMenu() {
+        CazadorController controller = spy(new CazadorController());
+        controller.manejarMenu(1);
+        verify(controller, times(1)).showCapturaFantasmaView();
         
-        
+        CazadorModel cazadorModelMock = mock(CazadorModel.class);
+        List<FantasmaModel> fantasmasMock = new ArrayList<>();
+        when(cazadorModelMock.getFantasmas()).thenReturn(fantasmasMock);
+        controller = spy(new CazadorController());
+        controller.manejarMenu(2);
+        verify(controller, times(1)).showEditarFantasmasView(fantasmasMock);
     }
-
+    @Test
+    public void testSalirAplicacion() {
+        final CazadorController controller = spy(new CazadorController());
+        doThrow(new RuntimeException("Salida detectada")).when(controller).salir();
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            controller.manejarMenu(6);
+        });
+        verify(controller, times(1)).salir();
+        assertEquals("Salida detectada", exception.getMessage());
+    }
     @Test
     void testPrintMenuView() {
         CazadorController controller = new CazadorController();
-
-        // Mockear el método estático de MenuPrincipalView
         try (MockedStatic<MenuPrincipalView> mocked = mockStatic(MenuPrincipalView.class)) {
-            // Ejecutar el método
             controller.printMenuView();
-
-            // Verificar que getInstance fue llamado exactamente una vez
             mocked.verify(() -> MenuPrincipalView.getInstance(controller), times(1));
         }
 

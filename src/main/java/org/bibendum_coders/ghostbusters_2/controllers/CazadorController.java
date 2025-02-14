@@ -26,25 +26,30 @@ public class CazadorController {
         
     }
     public void liberarFantasma(int intFantasma) {
-        
         cazadorModel.getFantasmas().removeIf(fantasma -> fantasma.getId() == intFantasma);
     }
     public void manejarMenu(int userOption) {
         
         if(userOption == 1) {
-            new CapturaFantasmaView(this);
+            showCapturaFantasmaView();
         }
         else if(userOption == 2) {
             List<FantasmaModel> fantasmas = cazadorModel.getFantasmas();
-            new EditarFantasmasView(this, fantasmas); 
+            showEditarFantasmasView(fantasmas); 
         }
         else if(userOption == 6) {
-            System.exit(0);
-
+            salir();
         }
-
-    }  
-    
+    }
+    public void showCapturaFantasmaView() {
+        new CapturaFantasmaView(this);
+    }
+    public void showEditarFantasmasView(List<FantasmaModel> fantasmas) {
+        new EditarFantasmasView(this, fantasmas);
+    }
+    public void salir() {
+        System.exit(0);
+    }
     public void printMenuView() {
         MenuPrincipalView.getInstance(this);
         
