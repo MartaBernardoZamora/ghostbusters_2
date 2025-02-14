@@ -69,9 +69,11 @@ public class MenuPrincipalView {
         layeredPane.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
     
         layeredPane.add(fondo, 0);
-        layeredPane.add(panelBotones, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(panelBotones, JLayeredPane.PALETTE_LAYER);// Añadir el panel de botones al JLayeredPane con una prioridad predefinida
     
         frame.setContentPane(layeredPane);
+        
+        frame.setLocationRelativeTo(null);// Centrar la ventana
         frame.setVisible(true);
     }
     
