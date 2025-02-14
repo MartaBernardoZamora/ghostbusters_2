@@ -38,8 +38,7 @@ public class CazadorController {
             new EditarFantasmasView(this, fantasmas); 
         }
         else if(userOption == 6) {
-            /*ExitView exitView = new ExitView(scanner, this);
-            exitView.showExitView();*/
+            System.exit(0);
 
         }
 
