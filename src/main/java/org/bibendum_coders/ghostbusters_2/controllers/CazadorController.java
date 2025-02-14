@@ -19,9 +19,6 @@ public class CazadorController {
         this.contadorId = 1;
        
     }
-    public CazadorController(Supplier<MenuPrincipalView> mockSupplier) {
-        //TODO Auto-generated constructor stub
-    }
     public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {
         Clase claseEnum = Clase.values()[clase - 1];
         FantasmaModel fantasmaModel = new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad);
@@ -46,8 +43,7 @@ public class CazadorController {
 
         }
 
-    }
-          
+    }  
     
     public void printMenuView() {
         MenuPrincipalView.getInstance(this);
