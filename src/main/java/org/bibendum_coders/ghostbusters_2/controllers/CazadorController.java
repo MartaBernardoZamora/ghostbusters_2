@@ -19,7 +19,7 @@ public class CazadorController {
         this.contadorId = 1;
        
     }
-    public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {//aqui se mantiene de meomento int (vosotros teníais string) y no el enum porque es lo que devuelve el jugador
+    public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {
         Clase claseEnum = Clase.values()[clase - 1];
         cazadorModel.getFantasmas().add(new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad)); 
         
