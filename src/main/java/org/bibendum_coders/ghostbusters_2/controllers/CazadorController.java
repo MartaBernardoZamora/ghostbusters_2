@@ -50,7 +50,7 @@ public class CazadorController {
           
     
     public void printMenuView() {
-        new MenuPrincipalView(this);
+        MenuPrincipalView.getInstance(this);
         
     }
     public CazadorModel getCazadorModel() {
