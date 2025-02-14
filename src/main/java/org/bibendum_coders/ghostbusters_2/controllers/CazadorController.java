@@ -1,7 +1,7 @@
 package org.bibendum_coders.ghostbusters_2.controllers;
 
 import java.util.List;
-
+import java.util.function.Supplier;
 
 import org.bibendum_coders.ghostbusters_2.models.CazadorModel;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
@@ -19,9 +19,13 @@ public class CazadorController {
         this.contadorId = 1;
        
     }
+    public CazadorController(Supplier<MenuPrincipalView> mockSupplier) {
+        //TODO Auto-generated constructor stub
+    }
     public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {
         Clase claseEnum = Clase.values()[clase - 1];
-        cazadorModel.getFantasmas().add(new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad)); 
+        FantasmaModel fantasmaModel = new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad);
+        cazadorModel.getFantasmas().add(fantasmaModel); 
         
     }
     public void liberarFantasma(int intFantasma) {
