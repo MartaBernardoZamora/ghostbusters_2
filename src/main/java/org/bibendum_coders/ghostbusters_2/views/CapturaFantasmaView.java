@@ -19,7 +19,7 @@ public class CapturaFantasmaView extends JFrame {
         setTitle("Capturar Fantasma");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Desactivar el comportamiento predeterminado
         setSize(800, 500);
-        setLayout(new BorderLayout());
+        setLayout(null);
 
         // Agregar un WindowListener para manejar el cierre de la ventana
         addWindowListener(new WindowAdapter() {
@@ -29,9 +29,17 @@ public class CapturaFantasmaView extends JFrame {
             }
         });
 
+        ImageIcon icon = new ImageIcon("src/main/java/org/bibendum_coders/ghostbusters_2/resources/images/ghost.jpg");
+        JLabel fondo = new JLabel(icon);
+        fondo.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+        setSize(icon.getIconWidth(), icon.getIconHeight());
+
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(6, 2, 5, 5)); // Ajustamos el layout para incluir el botón "Volver"
         inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        inputPanel.setOpaque(false);
+        inputPanel.setBounds(100, 100, 600, 250);
+        inputPanel.setBackground(Color.GRAY);
 
         JTextField nombreField = new JTextField();
 
@@ -85,7 +93,7 @@ public class CapturaFantasmaView extends JFrame {
                     mensaje, 
                     "Confirmación"
                 );
-                
+
                 dispose(); // Cerrar esta ventana
             } catch (IllegalArgumentException ex) {
                 // Mostrar mensaje de error con estilo limpio
@@ -103,7 +111,13 @@ public class CapturaFantasmaView extends JFrame {
         });
         inputPanel.add(volverButton);
 
-        add(inputPanel, BorderLayout.CENTER);
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+
+        layeredPane.add(fondo, 0);
+        layeredPane.add(inputPanel, JLayeredPane.PALETTE_LAYER);// Añadir el panel de botones al JLayeredPane con una prioridad predefinida
+
+        setContentPane(layeredPane);
         setVisible(true);
     }
 

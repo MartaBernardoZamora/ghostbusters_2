@@ -23,7 +23,8 @@ public class EditarFantasmasView extends JFrame {
         setTitle("Editar Fantasmas");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Desactivar el comportamiento predeterminado
         setSize(800, 500);
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
+        setLayout(null);
 
         // Agregar un WindowListener para manejar el cierre de la ventana
         addWindowListener(new WindowAdapter() {
@@ -32,10 +33,16 @@ public class EditarFantasmasView extends JFrame {
                 dispose(); // Llamar al método dispose() sobrescrito
             }
         });
-
+   // Imagen de fondo
+   ImageIcon icon = new ImageIcon("src/main/java/org/bibendum_coders/ghostbusters_2/resources/images/ghost.jpg");
+   JLabel fondo = new JLabel(icon);
+   fondo.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+   setSize(icon.getIconWidth(), icon.getIconHeight());
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
+       // panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setOpaque(false); 
+        panel.setBounds(100, 100, 600, 250);
         // Encabezados de la tabla
         JPanel headerPanel = new JPanel(new GridLayout(1, 6));
         headerPanel.add(createHeaderLabel("ID"));
@@ -66,7 +73,14 @@ public class EditarFantasmasView extends JFrame {
         buttonPanel.add(volverButton);
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
-        add(panel, BorderLayout.CENTER);
+       // add(panel, BorderLayout.CENTER);//
+       JLayeredPane layeredPane = new JLayeredPane();
+       layeredPane.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+   
+       layeredPane.add(fondo, 0);
+       layeredPane.add(panel, JLayeredPane.PALETTE_LAYER);// Añadir el panel de botones al JLayeredPane con una prioridad predefinida
+   
+       setContentPane(layeredPane);
         setVisible(true);
     }
 
@@ -107,6 +121,8 @@ public class EditarFantasmasView extends JFrame {
 
         contentPanel.revalidate(); // Actualizar el panel
         contentPanel.repaint(); // Repintar el panel
+        revalidate(); // Actualizar la ventana
+        repaint(); // Repintar la ventana
     }
 
     private JLabel createHeaderLabel(String text) {
