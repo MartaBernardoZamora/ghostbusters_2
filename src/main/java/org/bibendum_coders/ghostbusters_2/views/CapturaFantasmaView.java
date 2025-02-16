@@ -83,11 +83,14 @@ public class CapturaFantasmaView extends JFrame {
                     throw new IllegalArgumentException("La habilidad especial no puede estar vacía.");
                 }
 
-                cazadorController.capturarFantasma(nombre, claseIndex + 1, nivel, habilidad);
-
+                boolean capturado = cazadorController.capturarFantasma(nombre, claseIndex + 1, nivel, habilidad);
+                String mensaje = capturado ? 
+                    "Fantasma \"" + nombre + "\" capturado exitosamente." : 
+                    "¡Vaya! El fantasma \"" + nombre + "\" ha huído.";
+                    
                 // Mostrar mensaje de confirmación con estilo limpio
                 mostrarMensajeConfirmacion(
-                    "Fantasma \"" + nombre + "\" capturado exitosamente.",
+                    mensaje, 
                     "Confirmación"
                 );
 
