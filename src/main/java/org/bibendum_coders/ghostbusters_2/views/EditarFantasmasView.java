@@ -42,7 +42,7 @@ public class EditarFantasmasView extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
        // panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setOpaque(false); 
-        panel.setBounds(100, 100, 600, 250);
+        panel.setBounds(100, 200, 800, 250);
         // Encabezados de la tabla
         JPanel headerPanel = new JPanel(new GridLayout(1, 6));
         headerPanel.add(createHeaderLabel("ID"));
@@ -73,14 +73,15 @@ public class EditarFantasmasView extends JFrame {
         buttonPanel.add(volverButton);
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
-       // add(panel, BorderLayout.CENTER);//
-       JLayeredPane layeredPane = new JLayeredPane();
-       layeredPane.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
-   
-       layeredPane.add(fondo, 0);
-       layeredPane.add(panel, JLayeredPane.PALETTE_LAYER);// Añadir el panel de botones al JLayeredPane con una prioridad predefinida
-   
-       setContentPane(layeredPane);
+        // add(panel, BorderLayout.CENTER);//
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
+    
+        layeredPane.add(fondo, 0);
+        layeredPane.add(panel, JLayeredPane.PALETTE_LAYER);// Añadir el panel de botones al JLayeredPane con una prioridad predefinida
+    
+        setContentPane(layeredPane);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

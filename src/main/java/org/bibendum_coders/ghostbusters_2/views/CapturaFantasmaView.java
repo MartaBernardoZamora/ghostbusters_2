@@ -37,9 +37,8 @@ public class CapturaFantasmaView extends JFrame {
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(6, 2, 5, 5)); // Ajustamos el layout para incluir el botón "Volver"
         inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        inputPanel.setOpaque(false);
-        inputPanel.setBounds(100, 100, 600, 250);
-        inputPanel.setBackground(Color.GRAY);
+        inputPanel.setBounds(250, 200, 600, 250);
+        //inputPanel.setBackground(Color.GRAY);
 
         JTextField nombreField = new JTextField();
 
@@ -86,8 +85,9 @@ public class CapturaFantasmaView extends JFrame {
                 boolean capturado = cazadorController.capturarFantasma(nombre, claseIndex + 1, nivel, habilidad);
                 String mensaje = capturado ? 
                     "Fantasma \"" + nombre + "\" capturado exitosamente." : 
-                    "¡Vaya! El fantasma \"" + nombre + "\" ha huído.";
-                    
+                    "¡Vaya! El fantasma \"" + nombre + "\" ha huído porque \n" +
+                    "la afinidad no es alta y el arma se ha recalentado.\n" +
+                    "Vuelve a intentarlo.";
                 // Mostrar mensaje de confirmación con estilo limpio
                 mostrarMensajeConfirmacion(
                     mensaje, 
@@ -118,6 +118,7 @@ public class CapturaFantasmaView extends JFrame {
         layeredPane.add(inputPanel, JLayeredPane.PALETTE_LAYER);// Añadir el panel de botones al JLayeredPane con una prioridad predefinida
 
         setContentPane(layeredPane);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
