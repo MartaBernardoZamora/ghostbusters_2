@@ -30,7 +30,7 @@ public class CazadorModelTest {
     void testDeleteFantasma() {
         FantasmaModel fantasmaModel = new FantasmaModel(1, "fantasmico", Clase.CLASE4, "medio", "vuela");
         cazador.addFantasma(fantasmaModel);
-        int fantasmaNumber = 1; /*Numero proporcionado por el usuario*/
+        int fantasmaNumber = 1;
         cazador.deleteFantasma(fantasmaNumber-1);
         List<FantasmaModel> result = cazador.getFantasmas();
         assertThat(result.size(), is(0));

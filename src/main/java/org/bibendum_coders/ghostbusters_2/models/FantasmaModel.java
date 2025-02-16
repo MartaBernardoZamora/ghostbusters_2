@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class FantasmaModel {
     private int id;
     private String nombre;
-    private Clase clase;//Esto lo he cambiado para utilizar el enum Clase
-    private String nivel;//¿Lo cambiamos a enum?
+    private Clase clase;
+    private String nivel;
     private String habilidad;
     private LocalDate fechaCaptura;
     private int afinity;
@@ -33,7 +33,4 @@ public class FantasmaModel {
     public String getHabilidad() { return habilidad; }
     public LocalDate getFechaCaptura() { return fechaCaptura; }
     public int getAfinity() { return afinity; }
-
-    
-
 }
