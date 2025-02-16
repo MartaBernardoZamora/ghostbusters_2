@@ -28,11 +28,12 @@ public class CazadorControllerTest {
     @Test
     void testCapturarFantasma() {
         CazadorController cazadorController = new CazadorController();
-        cazadorController.capturarFantasma("fantasmico", 1, "Medio", "vuela");
+        Boolean prueba = cazadorController.capturarFantasma("fantasmico", 1, 1, "vuela");
 
         List<FantasmaModel> result = cazadorController.getCazadorModel().getFantasmas();
 
         assertThat(result.size(), is(1));
+        assertThat(prueba, is(true));
 
     }
 
@@ -48,7 +49,7 @@ public class CazadorControllerTest {
         CazadorController cazadorController = new CazadorController();
 
         assertThat(cazadorController.getContadorId(), is(1));
-        cazadorController.capturarFantasma("fantasmico", 1, "Medio", "vuela");
+        cazadorController.capturarFantasma("fantasmico", 1, 1, "vuela");
 
         assertThat(cazadorController.getContadorId(), is(2));
     }
@@ -56,7 +57,7 @@ public class CazadorControllerTest {
     @Test
     void testLiberarFantasma() {
         CazadorController cazadorController = new CazadorController();
-        cazadorController.capturarFantasma("fantasmico", 1, "Medio", "vuela");
+        cazadorController.capturarFantasma("fantasmico", 1, 1, "vuela");
         
         cazadorController.liberarFantasma(999);
         List<FantasmaModel> result = cazadorController.getCazadorModel().getFantasmas();
@@ -67,6 +68,7 @@ public class CazadorControllerTest {
         assertThat(result.size(), is(0));
 
     }
+    
 
     @Test
     void testManejarMenu() {

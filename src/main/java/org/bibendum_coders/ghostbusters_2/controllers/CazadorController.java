@@ -5,6 +5,7 @@ import java.util.List;
 import org.bibendum_coders.ghostbusters_2.models.CazadorModel;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
 import org.bibendum_coders.ghostbusters_2.models.FantasmaModel;
+import org.bibendum_coders.ghostbusters_2.models.Peligro;
 import org.bibendum_coders.ghostbusters_2.views.MenuPrincipalView;
 import org.bibendum_coders.ghostbusters_2.views.CapturaFantasmaView;
 import org.bibendum_coders.ghostbusters_2.views.EditarFantasmasView;
@@ -18,9 +19,10 @@ public class CazadorController {
         this.contadorId = 1;
        
     }
-    public boolean capturarFantasma(String nombre, int clase, String nivel, String habilidad) {
+    public boolean capturarFantasma(String nombre, int clase, int peligro,String habilidad) {
         Clase claseEnum = Clase.values()[clase - 1];
-        FantasmaModel fantasmaModel = new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad);
+        Peligro peligroEnum = Peligro.values()[peligro - 1];
+        FantasmaModel fantasmaModel = new FantasmaModel(contadorId++, nombre, claseEnum, peligroEnum, habilidad);
         int disparo = (int) (Math.random() * 11);
         if (disparo <= fantasmaModel.getAfinity()) {            
             cazadorModel.getFantasmas().add(fantasmaModel);
