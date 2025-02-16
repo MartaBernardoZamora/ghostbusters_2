@@ -23,7 +23,7 @@ public class FantasmaModel {
     public int afinityCalculatation() {
         int afinity = 10-clase.ordinal();
         if (nivel.equals("Alto")||nivel.equals("alto")) return afinity-2;
-        if (nivel.equals("Medio")||nivel.equals("bajo")) return afinity-1;
+        if (nivel.equals("Medio")||nivel.equals("medio")) return afinity-1;
         return afinity;
     }
     public int getId() { return id;}
