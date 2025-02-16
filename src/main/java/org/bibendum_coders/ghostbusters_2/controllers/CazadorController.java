@@ -18,10 +18,15 @@ public class CazadorController {
         this.contadorId = 1;
        
     }
-    public void capturarFantasma(String nombre, int clase, String nivel, String habilidad) {
+    public boolean capturarFantasma(String nombre, int clase, String nivel, String habilidad) {
         Clase claseEnum = Clase.values()[clase - 1];
         FantasmaModel fantasmaModel = new FantasmaModel(contadorId++, nombre, claseEnum, nivel, habilidad);
-        cazadorModel.getFantasmas().add(fantasmaModel); 
+        int disparo = (int) (Math.random() * 11);
+        if (disparo <= fantasmaModel.getAfinity()) {            
+            cazadorModel.getFantasmas().add(fantasmaModel);
+            return true;
+        } 
+        return false;
         
     }
     public void liberarFantasma(int intFantasma) {
