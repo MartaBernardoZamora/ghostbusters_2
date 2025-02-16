@@ -57,8 +57,13 @@ public class CazadorControllerTest {
     void testLiberarFantasma() {
         CazadorController cazadorController = new CazadorController();
         cazadorController.capturarFantasma("fantasmico", 1, "Medio", "vuela");
+        
+        cazadorController.liberarFantasma(999);
         List<FantasmaModel> result = cazadorController.getCazadorModel().getFantasmas();
+        assertThat(result.size(), is(1));
+
         cazadorController.liberarFantasma(1);
+        result = cazadorController.getCazadorModel().getFantasmas();
         assertThat(result.size(), is(0));
 
     }
