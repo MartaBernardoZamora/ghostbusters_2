@@ -20,25 +20,26 @@ Ghostbusters_2 es un juego basado en una consola donde los jugadores pueden capt
 GhostBusters_2/
 ├── src/
 │   ├── main/
+│   │   ├── java/org/bibendum_coders/ghostbusters_2/
 │   │   │   ├── App.java
-java/org/bibendum_coders/ghostbusters_2/
 │   │   │   ├── controllers/
 │   │   │   │   ├── CazadorController.java
 │   │   │   ├── models/
 │   │   │   │   ├── CazadorModel.java
 │   │   │   │   ├── Clase.java
 │   │   │   │   ├── FantasmaModel.java
-│   │   │   ├── Resource
-│   │   │     |    ├── Images
+│   │   │   ├── resources/
+│   │   │   │   ├── images/
 │   │   │   ├── views/
 │   │   │   │   ├── CapturarFantasmaView.java
 │   │   │   │   ├── EditarFantasmasView.java
 │   │   │   │   ├── MenuPrincipalView.java
 │   ├── test/
-│   │   ├── java/org/bibendum_coders/ghostbusters_2.models
-│   │   │   │   ├── CazadorModelTest.java
-│   │   │   │   ├── ClaseTest.java
-│   │   │   │   ├── FantasmaModelTest.java
+│   │   ├── java/org/bibendum_coders/ghostbusters_2/models/
+│   │   │   ├── CazadorModelTest.java
+│   │   │   ├── ClaseTest.java
+│   │   │   ├── FantasmaModelTest.java
+
 
 
 ## MVP
