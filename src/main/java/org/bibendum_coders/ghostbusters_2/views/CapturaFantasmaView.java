@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import org.bibendum_coders.ghostbusters_2.controllers.CazadorController;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
 import org.bibendum_coders.ghostbusters_2.models.Peligro;
+import org.bibendum_coders.ghostbusters_2.utils.ButtonFactory;
 
 public class CapturaFantasmaView extends JFrame {
     private CazadorController cazadorController;
@@ -40,7 +41,6 @@ public class CapturaFantasmaView extends JFrame {
         inputPanel.setBounds(200, 200, 600, 250);
 
         JTextField nombreField = new JTextField();
-
         String[] clases = new String[Clase.values().length];
         for (int i = 0; i < Clase.values().length; i++) {
             clases[i] = Clase.values()[i].getClaseString();
@@ -64,13 +64,12 @@ public class CapturaFantasmaView extends JFrame {
         inputPanel.add(new JLabel("Habilidad Especial:"));
         inputPanel.add(habilidadField);
 
-        JButton capturarButton = createStyledButton("Capturar Fantasma");
+        JButton capturarButton = ButtonFactory.createStyledButton("Capturar Fantasma");
         capturarButton.addActionListener(e -> {
             try {
                 String nombre = nombreField.getText().trim();
                 int claseIndex = claseComboBox.getSelectedIndex();
                 int peligroIndex = nivelComboBox.getSelectedIndex();
-
                 String habilidad = habilidadField.getText().trim();
 
                 if (nombre.isEmpty()) {
@@ -92,20 +91,15 @@ public class CapturaFantasmaView extends JFrame {
                     "¡Vaya! El fantasma \"" + nombre + "\" ha huído porque \n" +
                     "la afinidad no es alta y el arma se ha recalentado.\n" +
                     "Vuelve a intentarlo.";
-                mostrarMensajeConfirmacion(
-                    mensaje,
-                    "Confirmación"
-                );
-
+                mostrarMensajeConfirmacion(mensaje, "Confirmación");
                 dispose();
             } catch (IllegalArgumentException ex) {
                 mostrarMensajeError(ex.getMessage());
             }
         });
-
         inputPanel.add(capturarButton);
 
-        JButton volverButton = createStyledButton("Volver");
+        JButton volverButton = ButtonFactory.createStyledButton("Volver");
         volverButton.addActionListener(e -> {
             dispose();
             MenuPrincipalView.getInstance(cazadorController).showMenu();
@@ -114,7 +108,6 @@ public class CapturaFantasmaView extends JFrame {
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
-
         layeredPane.add(fondo, 0);
         layeredPane.add(inputPanel, JLayeredPane.PALETTE_LAYER);
 
@@ -123,52 +116,18 @@ public class CapturaFantasmaView extends JFrame {
         setVisible(true);
     }
 
-    private JButton createStyledButton(String text) {
-        JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        button.setBackground(new Color(0, 123, 255));
-        button.setForeground(Color.WHITE);
-        button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        button.setMargin(new Insets(5, 10, 5, 10));
-
-        button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(0, 102, 204));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(0, 123, 255));
-            }
-        });
-
-        return button;
-    }
-
     private void mostrarMensajeConfirmacion(String mensaje, String titulo) {
         UIManager.put("Button.focus", new Color(0, 0, 0, 0));
         UIManager.put("OptionPane.background", Color.WHITE);
         UIManager.put("Panel.background", Color.WHITE);
-
-        JOptionPane.showMessageDialog(
-            this,
-            mensaje,
-            titulo,
-            JOptionPane.INFORMATION_MESSAGE
-        );
+        JOptionPane.showMessageDialog(this, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE);
     }
-
 
     private void mostrarMensajeError(String mensaje) {
         UIManager.put("Button.focus", new Color(0, 0, 0, 0));
         UIManager.put("OptionPane.background", Color.WHITE);
         UIManager.put("Panel.background", Color.WHITE);
-
-        JOptionPane.showMessageDialog(
-            this,
-            mensaje,
-            "Error",
-            JOptionPane.ERROR_MESSAGE
-        );
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     @Override
