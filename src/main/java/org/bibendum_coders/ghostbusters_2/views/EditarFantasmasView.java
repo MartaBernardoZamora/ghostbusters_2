@@ -103,7 +103,7 @@ public class EditarFantasmasView extends JFrame {
                 rowPanel.add(createCenteredPanel(String.valueOf(fantasma.getId()), true));
                 rowPanel.add(createCenteredPanel(fantasma.getNombre(), true));
                 rowPanel.add(createCenteredPanel(fantasma.getClase().name(), true));
-                rowPanel.add(createCenteredPanel(fantasma.getNivelPeligro(), true));
+                rowPanel.add(createCenteredPanel(String.valueOf(fantasma.getNivelPeligro()), true));
                 rowPanel.add(createCenteredPanel(fantasma.getHabilidad(), true));
                 rowPanel.add(createCenteredPanel(fecha, true));
                 rowPanel.add(createCenteredPanel(String.valueOf(fantasma.getAfinity())+"/10", true));

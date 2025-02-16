@@ -6,6 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import org.bibendum_coders.ghostbusters_2.controllers.CazadorController;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
+import org.bibendum_coders.ghostbusters_2.models.Peligro;
 
 public class CapturaFantasmaView extends JFrame {
     private CazadorController cazadorController;
@@ -46,7 +47,12 @@ public class CapturaFantasmaView extends JFrame {
         }
         JComboBox<String> claseComboBox = new JComboBox<>(clases);
 
-        JTextField nivelField = new JTextField();
+        String[] peligros = new String[Peligro.values().length];
+        for (int i = 0; i < Peligro.values().length; i++) {
+            peligros[i] = Peligro.values()[i].getPeligroString();
+        }
+        JComboBox<String> nivelComboBox = new JComboBox<>(peligros);
+        
         JTextField habilidadField = new JTextField();
 
         inputPanel.add(new JLabel("Nombre del Fantasma:"));
@@ -54,7 +60,7 @@ public class CapturaFantasmaView extends JFrame {
         inputPanel.add(new JLabel("Clase del Fantasma:"));
         inputPanel.add(claseComboBox);
         inputPanel.add(new JLabel("Nivel de Peligro:"));
-        inputPanel.add(nivelField);
+        inputPanel.add(nivelComboBox);
         inputPanel.add(new JLabel("Habilidad Especial:"));
         inputPanel.add(habilidadField);
 
@@ -63,7 +69,8 @@ public class CapturaFantasmaView extends JFrame {
             try {
                 String nombre = nombreField.getText().trim();
                 int claseIndex = claseComboBox.getSelectedIndex();
-                String nivel = nivelField.getText().trim();
+                int peligroIndex = nivelComboBox.getSelectedIndex();
+
                 String habilidad = habilidadField.getText().trim();
 
                 if (nombre.isEmpty()) {
@@ -72,14 +79,14 @@ public class CapturaFantasmaView extends JFrame {
                 if (claseIndex == -1) {
                     throw new IllegalArgumentException("Debes seleccionar una clase válida.");
                 }
-                if (nivel.isEmpty()) {
+                if (peligroIndex == -1) {
                     throw new IllegalArgumentException("El nivel de peligro no puede estar vacío.");
                 }
                 if (habilidad.isEmpty()) {
                     throw new IllegalArgumentException("La habilidad especial no puede estar vacía.");
                 }
 
-                boolean capturado = cazadorController.capturarFantasma(nombre, claseIndex + 1, nivel, habilidad);
+                boolean capturado = cazadorController.capturarFantasma(nombre, claseIndex + 1, peligroIndex + 1, habilidad);
                 String mensaje = capturado ? 
                     "Fantasma \"" + nombre + "\" capturado exitosamente." : 
                     "¡Vaya! El fantasma \"" + nombre + "\" ha huído porque \n" +
