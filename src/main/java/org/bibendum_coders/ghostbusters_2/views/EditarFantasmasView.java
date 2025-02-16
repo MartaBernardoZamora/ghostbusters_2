@@ -33,13 +33,13 @@ public class EditarFantasmasView extends JFrame {
             }
         });
 
-   ImageIcon icon = new ImageIcon("src/main/java/org/bibendum_coders/ghostbusters_2/resources/images/ghost.jpg");
+   ImageIcon icon = new ImageIcon("src/main/java/org/bibendum_coders/ghostbusters_2/resources/images/Editar.jpg");
    JLabel fondo = new JLabel(icon);
    fondo.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
    setSize(icon.getIconWidth(), icon.getIconHeight());
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        panel.setOpaque(false); 
+        panel.setOpaque(false);
         panel.setBounds(100, 200, 800, 250);
 
         JPanel headerPanel = new JPanel(new GridLayout(1, 6));
@@ -72,10 +72,10 @@ public class EditarFantasmasView extends JFrame {
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
-    
+
         layeredPane.add(fondo, 0);
         layeredPane.add(panel, JLayeredPane.PALETTE_LAYER);
-    
+
         setContentPane(layeredPane);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -93,11 +93,11 @@ public class EditarFantasmasView extends JFrame {
             for (int i = 0; i < fantasmas.size(); i++) {
                 FantasmaModel fantasma = fantasmas.get(i);
 
-                JPanel rowPanel = new JPanel(new GridLayout(1, 6)); 
+                JPanel rowPanel = new JPanel(new GridLayout(1, 6));
                 if (i < fantasmas.size() - 1) {
                     rowPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY));
                 }
-                
+
                 DateTimeFormatter formatear = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 String fecha = fantasma.getFechaCaptura().format(formatear);
                 rowPanel.add(createCenteredPanel(String.valueOf(fantasma.getId()), true));
@@ -132,7 +132,7 @@ public class EditarFantasmasView extends JFrame {
 
     private JPanel createCenteredPanel(String text, boolean withRightBorder) {
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setOpaque(false); 
+        panel.setOpaque(false);
 
         if (!text.isEmpty()) {
             JLabel label = new JLabel(text, SwingConstants.CENTER);
@@ -148,16 +148,16 @@ public class EditarFantasmasView extends JFrame {
 
     private JButton createActionButton(String text, int idFantasma) {
         JButton button = createStyledButton(text);
-        button.setPreferredSize(new Dimension(80, 25)); 
+        button.setPreferredSize(new Dimension(80, 25));
         button.addActionListener(e -> {
-            cazadorController.liberarFantasma(idFantasma); 
-            
+            cazadorController.liberarFantasma(idFantasma);
+
             mostrarMensajeConfirmacion(
                 "Fantasma con ID " + idFantasma + " liberado exitosamente.",
                 "Confirmación"
             );
-            
-            fantasmas = cazadorController.getCazadorModel().getFantasmas(); 
+
+            fantasmas = cazadorController.getCazadorModel().getFantasmas();
             buildFantasmaList();
         });
         return button;
