@@ -39,18 +39,15 @@ public class MenuPrincipalView {
         JButton capturarButton = createStyledButton("Capturar Fantasma");
         capturarButton.addActionListener(e -> {
             frame.setVisible(false);
-            new CapturaFantasmaView(cazadorController);
+            cazadorController.manejarMenu(1);
         });
         JButton editarButton = createStyledButton("Editar Fantasmas");
         editarButton.addActionListener(e -> {
             frame.setVisible(false);
-            new EditarFantasmasView(
-                cazadorController,
-                cazadorController.getCazadorModel().getFantasmas()
-            );
+            cazadorController.manejarMenu(2);
         });
         JButton salirButton = createStyledButton("Salir");
-        salirButton.addActionListener(e -> System.exit(0));
+        salirButton.addActionListener(e -> cazadorController.manejarMenu(6));
     
         panelBotones.add(Box.createVerticalStrut(10));
         panelBotones.add(capturarButton);

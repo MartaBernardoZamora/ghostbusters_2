@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.bibendum_coders.ghostbusters_2.controllers.CazadorController;
 import org.bibendum_coders.ghostbusters_2.models.FantasmaModel;
@@ -47,6 +48,8 @@ public class EditarFantasmasView extends JFrame {
         headerPanel.add(createHeaderLabel("Clase"));
         headerPanel.add(createHeaderLabel("Nivel"));
         headerPanel.add(createHeaderLabel("Habilidad"));
+        headerPanel.add(createHeaderLabel("Fecha de captura"));
+        headerPanel.add(createHeaderLabel("Afinidad ectoplasmica"));
         headerPanel.add(createHeaderLabel("Acción"));
         panel.add(headerPanel, BorderLayout.NORTH);
 
@@ -94,12 +97,16 @@ public class EditarFantasmasView extends JFrame {
                 if (i < fantasmas.size() - 1) {
                     rowPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY));
                 }
-
+                
+                DateTimeFormatter formatear = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String fecha = fantasma.getFechaCaptura().format(formatear);
                 rowPanel.add(createCenteredPanel(String.valueOf(fantasma.getId()), true));
                 rowPanel.add(createCenteredPanel(fantasma.getNombre(), true));
                 rowPanel.add(createCenteredPanel(fantasma.getClase().name(), true));
                 rowPanel.add(createCenteredPanel(fantasma.getNivelPeligro(), true));
                 rowPanel.add(createCenteredPanel(fantasma.getHabilidad(), true));
+                rowPanel.add(createCenteredPanel(fecha, true));
+                rowPanel.add(createCenteredPanel(String.valueOf(fantasma.getAfinity())+"/10", true));
 
                 JPanel actionPanel = createCenteredPanel("", false);
                 JButton liberarButton = createActionButton("Liberar", fantasma.getId());
