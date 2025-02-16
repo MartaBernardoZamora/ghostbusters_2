@@ -18,7 +18,7 @@ public class CapturaFantasmaView extends JFrame {
 
     private void initialize() {
         setTitle("Capturar Fantasma");
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setSize(800, 500);
         setLayout(null);
 
@@ -29,13 +29,13 @@ public class CapturaFantasmaView extends JFrame {
             }
         });
 
-        ImageIcon icon = new ImageIcon("src/main/java/org/bibendum_coders/ghostbusters_2/resources/images/ghost.jpg");
+        ImageIcon icon = new ImageIcon("src/main/java/org/bibendum_coders/ghostbusters_2/resources/images/Captura.jpg");
         JLabel fondo = new JLabel(icon);
         fondo.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
         setSize(icon.getIconWidth(), icon.getIconHeight());
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(6, 2, 5, 5)); 
+        inputPanel.setLayout(new GridLayout(6, 2, 5, 5));
         inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         inputPanel.setBounds(200, 200, 600, 250);
 
@@ -52,7 +52,7 @@ public class CapturaFantasmaView extends JFrame {
             peligros[i] = Peligro.values()[i].getPeligroString();
         }
         JComboBox<String> nivelComboBox = new JComboBox<>(peligros);
-        
+
         JTextField habilidadField = new JTextField();
 
         inputPanel.add(new JLabel("Nombre del Fantasma:"));
@@ -87,13 +87,13 @@ public class CapturaFantasmaView extends JFrame {
                 }
 
                 boolean capturado = cazadorController.capturarFantasma(nombre, claseIndex + 1, peligroIndex + 1, habilidad);
-                String mensaje = capturado ? 
-                    "Fantasma \"" + nombre + "\" capturado exitosamente." : 
+                String mensaje = capturado ?
+                    "Fantasma \"" + nombre + "\" capturado exitosamente." :
                     "¡Vaya! El fantasma \"" + nombre + "\" ha huído porque \n" +
                     "la afinidad no es alta y el arma se ha recalentado.\n" +
                     "Vuelve a intentarlo.";
                 mostrarMensajeConfirmacion(
-                    mensaje, 
+                    mensaje,
                     "Confirmación"
                 );
 
@@ -125,11 +125,11 @@ public class CapturaFantasmaView extends JFrame {
 
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, 16)); 
-        button.setBackground(new Color(0, 123, 255)); 
-        button.setForeground(Color.WHITE); 
-        button.setBorder(BorderFactory.createLineBorder(Color.BLACK)); 
-        button.setMargin(new Insets(5, 10, 5, 10)); 
+        button.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        button.setBackground(new Color(0, 123, 255));
+        button.setForeground(Color.WHITE);
+        button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        button.setMargin(new Insets(5, 10, 5, 10));
 
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -137,7 +137,7 @@ public class CapturaFantasmaView extends JFrame {
             }
 
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(0, 123, 255)); 
+                button.setBackground(new Color(0, 123, 255));
             }
         });
 
@@ -145,7 +145,7 @@ public class CapturaFantasmaView extends JFrame {
     }
 
     private void mostrarMensajeConfirmacion(String mensaje, String titulo) {
-        UIManager.put("Button.focus", new Color(0, 0, 0, 0)); 
+        UIManager.put("Button.focus", new Color(0, 0, 0, 0));
         UIManager.put("OptionPane.background", Color.WHITE);
         UIManager.put("Panel.background", Color.WHITE);
 
