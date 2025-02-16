@@ -1,7 +1,6 @@
 package org.bibendum_coders.ghostbusters_2.controllers;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import org.bibendum_coders.ghostbusters_2.models.CazadorModel;
 import org.bibendum_coders.ghostbusters_2.models.Clase;
