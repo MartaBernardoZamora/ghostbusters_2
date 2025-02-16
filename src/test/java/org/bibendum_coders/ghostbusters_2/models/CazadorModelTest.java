@@ -20,7 +20,7 @@ public class CazadorModelTest {
     
     @Test
     void testAddFantasma() {
-        FantasmaModel fantasmaModel = new FantasmaModel(1, "fantasmico", Clase.CLASE4, "medio", "vuela");
+        FantasmaModel fantasmaModel = new FantasmaModel(1, "fantasmico", Clase.CLASE4, Peligro.MEDIO, "vuela");
         cazador.addFantasma(fantasmaModel);
         List<FantasmaModel> result = cazador.getFantasmas();
         assertThat(result.size(), is(1));
@@ -28,7 +28,7 @@ public class CazadorModelTest {
 
     @Test
     void testDeleteFantasma() {
-        FantasmaModel fantasmaModel = new FantasmaModel(1, "fantasmico", Clase.CLASE4, "medio", "vuela");
+        FantasmaModel fantasmaModel = new FantasmaModel(1, "fantasmico", Clase.CLASE4, Peligro.MEDIO, "vuela");
         cazador.addFantasma(fantasmaModel);
         int fantasmaNumber = 1;
         cazador.deleteFantasma(fantasmaNumber-1);
@@ -45,7 +45,7 @@ public class CazadorModelTest {
 
     @Test
     void testGetFantasmas() {
-        FantasmaModel fantasmaModel = new FantasmaModel(1, "fantasmico", Clase.CLASE4, "medio", "vuela");
+        FantasmaModel fantasmaModel = new FantasmaModel(1, "fantasmico", Clase.CLASE4, Peligro.MEDIO, "vuela");
         List<FantasmaModel> result = cazador.getFantasmas();
         List<FantasmaModel> resultExpected = new ArrayList<>();
         assertThat(result, is(resultExpected));
